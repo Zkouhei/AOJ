@@ -9,13 +9,15 @@
 
 ```js
 'use strict';
-(function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
-  (function(a,b) {
-    //ここに処理を書く
+(function(stdin) {
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
 
-  }(params[0],params[1])); 
+  (function(a, b) {
+    // ここに処理を書く
+
+  }(params[0], params[1]));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -28,13 +30,15 @@
 
 ```js
 'use strict';
-(function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
-  (function(a,b,c) {
-    //ここに処理を書く
+(function(stdin) {
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
 
-  }(params[0],params[1],params[2])); 
+  (function(a, b, c) {
+    // ここに処理を書く
+
+  }(params[0], params[1], params[2]));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -49,25 +53,30 @@
 
 ```js
 'use strict';
-(function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
-  (function(a,b,c) {
-    //ここに処理を書く
+(function(stdin) {
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
 
-  }(params[0],params[1],params[2])); 
+  (function(a, b, c) {
+    // ここに処理を書く
+
+  }(params[0], params[1], params[2]));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 > Array.protorype.sort() を使う場合
 
 ```js
 'use strict';
-(function(stdin) { 
-  var inputs = stdin.toString();
-  (function(array) {
-    //ここに処理を書く
+(function(stdin) {
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
 
-  }(inputs.split('\n')[0].split(' ').map(Number))); 
+  (function(array) {
+    // ここに処理を書く
+
+  })(params);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -80,13 +89,15 @@
 
 ```js
 'use strict';
-(function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
-  (function(W,H,x,y,r) {
-    //ここに処理を書く
+(function(stdin) {
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
 
-  }(params[0],params[1],params[2],params[3],params[4])); 
+  (function(W, H, x, y, r) {
+    // ここに処理を書く
+
+  }(params[0], params[1], params[2], params[3], params[4]));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 > オブジェクトを使った解法
@@ -94,13 +105,12 @@
 ```js
 'use strict';
 (function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
-
-  var Circle = function(x,y,r){
-    this.left = x - r;
-    this.right = x + r;
-    this.top = y + r;
+  var inputs = stdin.toString().trim().split('\n');
+  var params = inputs[0].split(' ').map(Number);
+  var Circle = function(x, y, r){
+    this.left   = x - r;
+    this.right  = x + r;
+    this.top    = y + r;
     this.bottom = y - r;
   };
 
@@ -112,9 +122,10 @@
   };
 
   (function(H,W,circle) {
+
     console.log(['No','Yes'][Number(circle.within(H,W))]);
-  }(
-    params[0],params[1],new Circle(params[2],params[3],params[4])
-  )); 
+
+  })(params[0],params[1],new Circle(params[2],params[3],params[4]); 
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```

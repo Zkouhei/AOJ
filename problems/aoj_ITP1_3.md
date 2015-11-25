@@ -21,14 +21,17 @@
 // Array.forEach() を 使ったパターン
 'use strict';
 (function(stdin) {
-  var EOF = '0';
-  var inputs  = stdin.toString().split('\n');
+  var EOF    = '0';
+  var inputs = stdin.toString().trim().split('\n');
+
   (function(array) {
-    array.forEach(function(x,index) {
+
+    array.forEach(function(x, index) {
       console.log('Case', index + ':', x);
     });
-  }(inputs.slice(0,inputs.indexOf(EOF))
-  )); 
+
+  })(inputs.slice(0, inputs.indexOf(EOF)));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -45,40 +48,51 @@
 'use strict';
 (function(stdin) {
   var EOF = '0 0';
-  var inputs  = stdin.toString().split('\n');
-  (function(data_array) {
-    data_array.map(function(v) {
-      return v.split(' ') 
-        .map(Number)
-        .sort(function(a,b) {
-          return a - b;
-        });
-    }).forEach(function(v) {
-      console.log(v[0],v[1]);
+  var inputs = stdin.toString().trim().split('\n');
+  var matrics = inputs.slice(0, inputs.indexOf(EOF)).map(function(v) {
+    return v.split(' ').map(Number);
+  });
+
+  (function(matrics) {
+
+    matrics.map(function(v) {
+      return v.sort(function(a, b) {
+        return a - b;
+      });
+    })
+    .forEach(function(v) {
+      console.log(v[0], v[1]);
     });
-  }(inputs.slice(0,inputs.indexOf(EOF))
-  )); 
+
+  })(matrics);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
 ```js
-// Math.max Math.min を使ったパターン
 'use strict';
+// Math.max Math.min を使ったパターン
 (function(stdin) {
-  var EOF = '0 0';
-  var inputs  = stdin.toString().split('\n');
-  (function(data_array) {
-    data_array.map(function(v) {
-      var split_data = v.split(' ').map(Number);
+  var EOF     = '0 0';
+  var inputs  = stdin.toString().trim().split('\n');
+  var matrics = inputs.slice(0, inputs.indexOf(EOF)).map(function(v) {
+    return v.split(' ').map(Number);
+  });
+
+  (function(matrics) {
+
+    matrics.map(function(v) {
       return [
-        Math.min(split_data[0],split_data[1])
-        ,Math.max(split_data[0],split_data[1])
+        Math.min(v[0], v[1])
+        , Math.max(v[0], v[1])
       ];
-    }).forEach(function(v) {
-      console.log(v[0],v[1]);
+    })
+    .forEach(function(v) {
+      console.log(v[0], v[1]);
     });
-  }(inputs.slice(0,inputs.indexOf(EOF))
-  )); 
+
+  })(matrics);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -87,30 +101,35 @@
 
 - 問題:3つの整数 a,b,c を読み込み、a から b までの整数の中に、c の約数がいくつあるかを求める
 - 入力:a,b,c が1つの空白区切りで1行
-- 解法:約数の判定は ( c % x === 0) を使う
+- 解法:約数の判定は ( c % n === 0) を使う
 - [solution](http://judge.u-aizu.ac.jp/onlinejudge/solution.jsp?pid=ITP1_3_D#10)
 
 ```js
 'use strict';
 (function(stdin) {
-  var lines  = stdin.toString().split('\n');
-  var param = lines[0].split(' ').map(Number);
-  (function(data_array,c) {
-    var count = data_array
-      .filter(function diviser(v) {
-        return c % v === 0;
-      }).length;
-    console.log(count);
-  }(new Range(param[0],param[1]),param[2]
-  ));
 
-  function Range(startIndex,endIndex) {
+  var inputs = stdin.toString().split('\n');
+  var cols   = inputs[0].split(' ').map(Number);
+  (function(numbers, divisable) {
+
+    console.log(numbers.filter(divisable).length);
+
+  })(range(cols[0], cols[1]), isDivisable(cols[2]));
+
+  function range(n, m) {
     var array = [];
-    for (var i = startIndex; i <= endIndex; i++) {
+
+    for (var i = n; i < m + 1; i++) {
       array.push(i);
     }
     return array;
   }
+
+  function isDivisable(diviser) {
+    return function(n) {
+      return diviser % n === 0;
+    };
+  }
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
-

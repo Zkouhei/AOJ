@@ -36,11 +36,12 @@
 ```js
 'use strict';
 (function(stdin) { 
-  var inputs = stdin.toString();
+  var inputs = stdin.toString().trim();
+  var param = parseInt(inputs,10);
   (function(x) {
     //ここに処理を書く
 
-  }(inputs.split('\n')[0].map(Number))); 
+  }(param)); 
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -55,8 +56,8 @@
 ```js
 'use strict';
 (function(stdin) { 
-  var inputs = stdin.toString();
-  var params = inputs.split('\n')[0].split(' ').map(Number);
+  var inputs = stdin.toString().trim();
+  var params = inputs.split(' ').map(Number);
   (function(a,b) {
     //ここに処理を書く
 
@@ -75,10 +76,11 @@
 ```js
 'use strict';
 (function(stdin) { 
-  var inputs = stdin.toString();
+  var inputs = stdin.toString().trim();
+  var param = parseInt(inputs,10)
   (function(S) {
     //ここに処理を書く
 
-  }(inputs.split('\n')[0].map(Number))); 
+  }(param); 
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```

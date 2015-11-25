@@ -4,6 +4,10 @@
 
 [String,Array,Math,RegExp,Object オブジェクト](./docs/aoj_object_method.md)
 
+## JavaScript Tips
+
+[JavaScript Tips](./docs/javascript_tips.md)
+
 ## AOJ Templates
 
 [AOJ テンプレート(入力)](./docs/aoj_templates.md)

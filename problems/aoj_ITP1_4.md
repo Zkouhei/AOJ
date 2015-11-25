@@ -14,49 +14,14 @@
 ```js
 'use strict';
 (function(stdin) {
-  var inputs  = stdin.toString().split('\n')[0].split(' ').map(Number);
+  var inputs = stdin.toString().trim().split('\n');
+  var cols   = inputs[0].split(' ').map(Number);
+
   (function(a,b) {
   // ここに処理を書く
-  }(inputs[0],inputs[1]
-  )); 
+  })(cols[0],cols[1]);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
-```
-
-```js
-// 小数を整数にする手法(時間計測)
-exec(_number);
-exec(_parseInt);
-exec(_floor);
-exec(_xorxor)
-exec(_orZero);
-exec(_bitshiftZero);
-
-function exec(f) {
-  console.time(f.name);
-  for (var i = 0; i < 100000000; i++) {
-    f(3,2);
-  }
-  console.timeEnd(f.name);
-}
-
-function _number(n,m) {
-  return Number(n / m);
-}
-function _parseInt(n,m) {
-  return parseInt(n / m,10);
-}
-function _floor(n,m) {
-  return Math.floor(n / m);
-}
-function _xorxor(n,m) {
-  return ~~(n / m);
-}
-function _orZero(n,m) {
-  return (n / m) | 0;
-}
-function _bitshiftZero(n,m) {
-  return (n / m) >> 0;
-}
 ```
 
 ## [B. Circle ](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_4_B)
@@ -70,11 +35,13 @@ function _bitshiftZero(n,m) {
 ```js
 'use strict';
 (function(stdin) {
-  var inputs  = stdin.toString().trim();
+  var inputs  = stdin.toString().trim().split('\n');
+
   (function(r) {
   // ここに処理を書く
-  }(parseInt(inputs,10)
-  )); 
+
+  })(parseInt(inputs[0],10));
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -91,13 +58,16 @@ function _bitshiftZero(n,m) {
 'use strict';
 (function(stdin) {
   var EOF = /\w*\s\?\s\w*/;
-  var inputs  = stdin.toString().split(EOF,1).join().trim().split('\n');
-  (function(data) {
+  var inputs  = stdin.toString().trim().split('\n');
+  var matrics = inputs.slice(0, inputs.indexOf(EOF)).map(function(v) {
+    return v.split(' ');
+  });
+
+  (function(matrics) {
   // ここに処理を書く
-    console.log(data);
-  }
- }(inputs.map(function(v){return v.split(' ')})
-  )); 
+
+  })(matrics);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
 
@@ -112,26 +82,27 @@ function _bitshiftZero(n,m) {
 ```js
 'use strict';
 (function(stdin) {
-  var lines  = stdin.toString().split('\n');
+  var inputs = stdin.toString().trim().split('\n');
+  var cols   = inputs[1].split(' ', inputs[0]).map(Number);
 
   (function(data) {
     console.log(
-      [data.reduce(min)
-      ,data.reduce(max)
-      ,data.reduce(sum)
-      ].join(' '));
+      data.reduce(min)
+      , data.reduce(max)
+      , data.reduce(sum)
+    );
 
-    function min(a,b) {
-      return Math.min(a,b);
+    function min(a, b) {
+      return Math.min(a, b);
     }
-    function max(a,b) {
-      return Math.max(a,b);
+    function max(a, b) {
+      return Math.max(a, b);
     }
-    function sum(a,b) {
+    function sum(a, b) {
       return a + b;
     }
-  }(lines[1].split(' ').slice(0,lines[0]).map(Number)
-  ));
-  
+
+  })(cols);
+
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
