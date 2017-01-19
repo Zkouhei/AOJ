@@ -181,3 +181,20 @@ process.stdin.on('data', function(chunk) {
 
 }(require('fs').readFileSync('/dev/stdin', 'utf8')));
 ```
+> Arrow構文版
+(stdin => {
+  // Define Function
+
+  // Declare Variable
+  const inputs  = stdin.toString().trim().split('\n');
+
+  // Main Procedure
+  const result = ((lines) => {
+
+    return lines;
+
+  })(inputs);
+
+  console.log(result);
+
+})(require('fs').readFileSync('/dev/stdin', 'utf8'));
