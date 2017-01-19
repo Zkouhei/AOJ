@@ -196,7 +196,8 @@ process.stdin.on('data', function(chunk) {
     return lines;
 
   })(inputs);
-
+  
+  // Display
   console.log(result);
 
 })(require('fs').readFileSync('/dev/stdin', 'utf8'));
